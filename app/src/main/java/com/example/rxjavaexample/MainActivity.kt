@@ -3,6 +3,7 @@ package com.example.rxjavaexample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.Observable
@@ -46,10 +47,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onNext(t: ArrayList<String>) {
                     Log.d("STAGES", "ON NEXT")
 
-                    for(i in waifus){
-                        Log.d("STAGES", i)
-                    }
-
                     adapter.updateList(t)
                 }
 
@@ -62,5 +59,18 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        waifus.add("Nagatoro")
+        waifus.add("Takagi-san")
+        waifus.add("Takamine-san")
+
+        //Os códigos comentados abaixo também funcionam
+
+        //waifus.clear()
+        //waifus.add("Just Monika")
     }
 }
